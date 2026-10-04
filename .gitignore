@@ -1,0 +1,12 @@
+.vibe-wise/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+# model weights and large artifacts
+*.safetensors
+*.gguf
+*.bin
+models/
+# keep benchmark results (never overwrite), ignore scratch
+bench/scratch/

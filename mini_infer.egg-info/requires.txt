@@ -1,0 +1,8 @@
+torch>=2.14
+transformers>=5.18
+safetensors>=0.8
+huggingface_hub>=1.33
+numpy>=2.5
+
+[dev]
+pytest>=9.1

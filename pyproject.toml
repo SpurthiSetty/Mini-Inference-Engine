@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mini-infer"
+version = "0.1.0"
+description = "From-scratch inference engine for Qwen3-0.6B"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.14",
+    "transformers>=5.18",  # tests use it as the Qwen3 reference; 5.x API
+    "safetensors>=0.8",
+    "huggingface_hub>=1.33",
+    "numpy>=2.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.1"]
+
+[tool.setuptools]
+packages = ["engine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

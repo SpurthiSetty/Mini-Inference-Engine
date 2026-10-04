@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: mini-infer
+Version: 0.1.0
+Summary: From-scratch inference engine for Qwen3-0.6B
+Requires-Python: >=3.11
+Requires-Dist: torch>=2.14
+Requires-Dist: transformers>=5.18
+Requires-Dist: safetensors>=0.8
+Requires-Dist: huggingface_hub>=1.33
+Requires-Dist: numpy>=2.5
+Provides-Extra: dev
+Requires-Dist: pytest>=9.1; extra == "dev"

@@ -1,0 +1,229 @@
+{
+  "stage": "stage0-bf16-mps",
+  "engine": "torch ops (no model)",
+  "timestamp": "2026-10-03T17:57:17",
+  "git_commit": null,
+  "versions": {
+    "python": "3.13.14",
+    "torch": "2.14.1"
+  },
+  "hardware": {
+    "chip": "Apple M5 Pro",
+    "peak_bandwidth_GBs": 307.0,
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O"
+  },
+  "backend": "mps",
+  "mps_fallback_env": null,
+  "args": {
+    "warmup": 20,
+    "reps": 200,
+    "inner": 100
+  },
+  "reference": "fp32 on CPU, identical inputs (seed 0)",
+  "error_metric": "max|out-ref| / max|ref|",
+  "correctness": {
+    "linear [1,1024]x[3072,1024]^T": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 1.322162574979302e-07
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.0031743801664561033
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.0004736647242680192
+      }
+    },
+    "softmax [16,128,128] dim=-1": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 3.5894427696803177e-07
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.011514214798808098
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.0017194029642269015
+      }
+    },
+    "silu [1,3072]": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 6.400868102218737e-08
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.003202482359483838
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.00042738596675917506
+      }
+    },
+    "rsqrt(mean(x^2)+eps) [1,1024]": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 0.0
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.00015354479546658695
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.00015354479546658695
+      }
+    },
+    "mul [1,1024]": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 0.0
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.003009265521541238
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.0004330173251219094
+      }
+    },
+    "add [1,1024]": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 0.0
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.0029726296197623014
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.00046489739906974137
+      }
+    },
+    "embedding [151936,1024] idx[32]": {
+      "fp32": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float32",
+        "normalized_max_error": 0.0
+      },
+      "bf16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "bfloat16",
+        "normalized_max_error": 0.0019742841832339764
+      },
+      "fp16": {
+        "ok": true,
+        "out_device": "mps:0",
+        "out_dtype": "float16",
+        "normalized_max_error": 0.0002469136379659176
+      }
+    }
+  },
+  "speed": {
+    "fp32": {
+      "bytes_moved": 12599296,
+      "per_op": {
+        "median_us": 184.4375,
+        "p95_us": 254.25,
+        "min_us": 157.541,
+        "n": 200,
+        "achieved_GBs": 68.31200813283633,
+        "pct_of_peak": 22.251468447177956
+      },
+      "batched": {
+        "median_us": 31.80021,
+        "p95_us": 33.86459,
+        "min_us": 31.106669999999998,
+        "n": 20,
+        "achieved_GBs": 396.2016603035011,
+        "pct_of_peak": 129.05591540830656
+      }
+    },
+    "bf16": {
+      "bytes_moved": 6299648,
+      "per_op": {
+        "median_us": 175.60399999999998,
+        "p95_us": 228.708,
+        "min_us": 127.917,
+        "n": 200,
+        "achieved_GBs": 35.874171431174695,
+        "pct_of_peak": 11.68539786031749,
+        "speedup_vs_fp32": 1.0503035238377258
+      },
+      "batched": {
+        "median_us": 19.615415,
+        "p95_us": 21.54166,
+        "min_us": 18.9775,
+        "n": 20,
+        "achieved_GBs": 321.1580280101135,
+        "pct_of_peak": 104.6117355081803,
+        "speedup_vs_fp32": 1.621184665223754
+      }
+    },
+    "fp16": {
+      "bytes_moved": 6299648,
+      "per_op": {
+        "median_us": 177.1045,
+        "p95_us": 223.25,
+        "min_us": 139.666,
+        "n": 200,
+        "achieved_GBs": 35.570231134725546,
+        "pct_of_peak": 11.58639450642526,
+        "speedup_vs_fp32": 1.041404933245626
+      },
+      "batched": {
+        "median_us": 19.435000000000002,
+        "p95_us": 22.05792,
+        "min_us": 19.086669999999998,
+        "n": 20,
+        "achieved_GBs": 324.13933624903524,
+        "pct_of_peak": 105.58284568372483,
+        "speedup_vs_fp32": 1.6362341137123744
+      }
+    }
+  }
+}
