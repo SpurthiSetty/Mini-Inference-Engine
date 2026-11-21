@@ -32,6 +32,6 @@ def rms_norm(x: Tensor, weight: Tensor, eps: float) -> Tensor:
     determines what "matching" means in tests/test_rmsnorm.py::test_rms_norm_bf16.
     """
     # Compute the root mean square (RMS) of the input tensor along the last dimension
-    denom = eps + (x * x).mean(dim=-1, keepdim=True)
+    denom = eps + (x * x).mean(dim=-1, keepdim=True) # [seq, 1] or [seq, 16, 1] or [seq, 8, 1]
     rms = denom.sqrt()
     return (x / rms) * weight
