@@ -36,7 +36,7 @@ def model(token_ids: Tensor, weights: dict, cos: Tensor, sin: Tensor, config: di
         h = decoder_layer(h, weights["layers"][i], cos, sin, config)
     h = rms_norm(h, weights["norm"], config["rms_norm_eps"])
     logits = h @ weights["embed_tokens"].T
-    return logits
+    return logits #  [seq, 151936]
 
 
     
